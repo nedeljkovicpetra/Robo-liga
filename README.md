@@ -1,0 +1,2 @@
+TLDR 
+petra radi sve
