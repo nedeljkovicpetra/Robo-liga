@@ -19,7 +19,7 @@ def driveToTarget (target):
     pass
 
 def stopRobot ():
-    #i wonder what this one does
+    #i wonder what this one does 
     pass
 
 #NAVIGACIJA
