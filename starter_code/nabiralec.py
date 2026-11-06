@@ -122,7 +122,7 @@ def beep(duration=1000, freq=440):
 
 def robot_die():
     """
-    Končaj s programom na robotu. Ustavi motorje.
+    Končaj s programom na robotu. Ustavi motorje. 
     """
     print('KONEC')
     motor_left.stop(stop_action='brake')
