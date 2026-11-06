@@ -6,7 +6,7 @@ int main(){
     cin >> n;
 
     for(int i = 0; i < 4; i++ ){
-        cout << ++n << '\n';
+        cout << i << ": " << ++n;
     }
 
     return 0;
