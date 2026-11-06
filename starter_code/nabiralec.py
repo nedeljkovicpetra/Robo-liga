@@ -4,7 +4,7 @@
 """Program za vodenje robota EV3 po seznamu tock na poligonu.
 [Tekmovanje Robo liga FRI]
 """
-
+ 
 __author__ = "Laboratory for adaptive systems and parallel processing"
 __copyright__ = "Copyright 2023, UL FRI - LASPP"
 __credits__ = ["Laboratory for adaptive systems and parallel processing"]
