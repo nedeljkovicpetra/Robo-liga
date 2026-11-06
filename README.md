@@ -1,3 +1,3 @@
 TLDR 
-
+petra radi sve
 
