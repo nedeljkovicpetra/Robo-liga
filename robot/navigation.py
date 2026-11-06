@@ -1,6 +1,5 @@
 #OVO IM JE ZAJEDNICKO, ZNACI U SUSTINI KRETANJE I TAKO TE GLUPOSTI
 
-#MATEMATICKE FUNKC
 def getDistance (p1, p2):
     #udaljenost dve poy
     pass
@@ -9,7 +8,7 @@ def getAngel (p1, robotDir, p2):
     #ugao izmedju pravca robota i cilja
     pass
 
-#KRETANJE ROBOTA
+#KRETANJE
 def turnToTarget (target):
     #self explanatory
     pass
