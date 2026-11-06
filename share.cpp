@@ -1,8 +1,9 @@
 #include <iostream>
-
+using namespace std;
 int main(){
+    
 
-    using namespace std;
+    
     cout << "please bro work";
 
 
