@@ -7,7 +7,8 @@ from time import time
 class PID():
     """
     Implementacija algoritma za regulacijo PID.
-    Nekaj virov za razjasnitev osnovnega načela delovanja:
+    Nekaj virov za razjasnitev osnovnega nac
+    ela delovanja:
         - https://en.wikipedia.org/wiki/PID_controller
         - https://www.csimn.com/CSI_pages/PIDforDummies.html
         - https://blog.opticontrols.com/archives/344
@@ -22,18 +23,20 @@ class PID():
             Kd: float = None,
             integral_limit: float = None):
         """
-        Ustvarimo nov regulator PID s pripadajočimi parametri.
-
+        Ustvarimo nov regulator PID s pripadajocimi parametri.
         Argumenti:
-        setpoint: ciljna vrednost regulirane spremenljivke
-        Kp: ojačitev proporcionalnega dela regulatorja.
-            Visoke vrednosti pomenijo hitrejši odziv sistema,
-            vendar previsoke vrednosti povzročijo oscilacije in nestabilnost.
-        Ki: ojačitev integralnega člena regulatorja.
-            Izniči napako v ustaljenem stanju. Zmanjša odzivnost.
-        Kd: ojačitev odvoda napake.
-            Zmanjša čas umirjanja in poveča odzivnost.
-        integral_limit: najvišja vrednost integrala
+        setpoint: Ciljna vrednost promenljive koju regulisemo.
+        Kp: Koeficijent proporcionalnog dela regulatora.
+            Vece vrednosti omogucavaju brzu reakciju sistema,
+            ali previsoke vrednosti mogu izazvati oscilacije
+            i nestabilnost.
+        Ki: Koeficijent integralnog dela regulatora.
+            Uklanja gresku u ustaljenom stanju.
+            Smanjuje brzinu odziva sistema.
+        Kd: Koeficijent diferencijalnog dela regulatora.
+            Smanjuje vreme potrebno da se sistem stabilizuje
+            i povecava brzinu odziva.
+        integral_limit: Maksimalna dozvoljena vrednost integrala
         """
         self._setpoint = setpoint
         self._Kp = Kp
@@ -55,7 +58,8 @@ class PID():
         """
         Ponastavitev regulatorja. 
         Lahko mu tudi spremenimo katero od vrednosti parametrov.
-        Napaka, integral napake in čas se ponastavijo.
+        Napaka, integral napake in c
+        as se ponastavijo.
         """
         if setpoint is not None:
             self._setpoint = setpoint
@@ -74,48 +78,51 @@ class PID():
 
     def update(self, measurement: float) -> float:
         """
-        Izračunamo vrednost izhoda regulatorja (regulirna veličina) 
-        glede na izmerjeno vrednost regulirane veličine (measurement) 
+        Izrac
+        unamo vrednost izhoda regulatorja (regulirna velic
+        ina) 
+        glede na izmerjeno vrednost regulirane velic
+        ine (measurement) 
         in ciljno vrednost (setpoint).
 
         Argumenti:
-        measurement: s tipali izmerjena vrednost regulirane veličine
-
-        Izhodna vrednost:
-        regulirna veličina, s katero želimo popraviti delovanje sistema 
-        (regulirano veličino), da bo dosegel ciljno vrednost
+            measurement: Vrednost regulisane velic
+            ine izmerena senzorima.
+        Povratna vrednost:
+            Upravljacka velicina kojom zelimo da korigujemo rad sistema
+            (regulisanu velicinu), kako bi dostigao ciljnu vrednost.
         """
         if self._value is None:
-            # Na začetku še nimamo zgodovine meritev, zato inicializiramo
-            # integral in vrnemo samo proporcionalni člen.
+            # Na zacetku še nimamo zgodovine meritev, zato inicializiramo
+            # integral in vrnemo samo proporcionalni clen.
             self._value = measurement
-            # Zapomnimo si začetni čas.
+            # Zapomnimo si zacetni cas.
             self._time = time()
             # Ponastavimo integral napake.
             self._integral = 0
-            # Napaka = ciljna vrednost - izmerjena vrednost regulirane veličine.
+            # Napaka = ciljna vrednost - izmerjena vrednost regulirane velicine.
             self._error = self._setpoint - measurement
             return self._Kp * self._error
         else:
-            # Sprememba časa
+            # Sprememba casa
             time_now = time()
             delta_time = time_now - self._time
             self._time = time_now
-            # Izmerjena vrednost regulirane veličine.
+            # Izmerjena vrednost regulirane velicine.
             self._value = measurement
-            # Napaka = ciljna vrednost - izmerjena vrednost regulirane veličine.
+            # Napaka = ciljna vrednost - izmerjena vrednost regulirane velicine.
             error = self._setpoint - self._value
 
             # Proporcionalni del
             P = self._Kp * error
 
-            # Integralni in odvodni člen sta opcijska.
+            # Integralni in odvodni clen sta opcijska.
             if self._Ki is None:
                 I = 0
             else:
-                # Integral se poveča za (sprememba napake) / (sprememba časa).
+                # Integral se poveca za (sprememba napake) / (sprememba casa).
                 self._integral += error * delta_time
-                # Ojačitev integralnega dela.
+                # Ojacitev integralnega dela.
                 I = self._Ki * self._integral
                 if self._integral_limit is not None:
                     # Omejimo integralni del.
@@ -125,11 +132,11 @@ class PID():
             if self._Kd is None:
                 D = 0
             else:
-                # Odvod napake z ojačitvijo.
+                # Odvod napake z ojacitvijo.
                 D = self._Kd * (error - self._error) / delta_time
             # Posodobimo napako.
             self._error = error
-            # Vrnemo regulirno veličino, sestavljeno iz proporcionalnega,
-            # integralnega in odvodnega člena.
+            # Vrnemo regulirno velicino, sestavljeno iz proporcionalnega,
+            # integralnega in odvodnega clena.
             return P + I + D
 
