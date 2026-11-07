@@ -13,9 +13,20 @@ def turnToTarget (target):
     #self explanatory
     pass
 
-def driveToTarget (motor_left, motor_right, distance, angle, forward, turn):
+def driveToTarget (motor_left, motor_right, distance, angle, pidForward, pidTurn):
+    uBase = pidForward.update(measurement=distance)
+    uTurn = pidTurn.update(measurement=angle)
 
-    pass
+    uBase = min(max(uBase, -SPEED_BASE_MAX), SPEED_BASE_MAX)  #config.py 24
+
+    speedRight = -uBase + uTurn  #pid.py 104
+    speedLeft = -uBase - uTurn
+
+    speedRight = round(min(max(speedRight, -SPEED_MAX), SPEED_MAX))  #config.py 21
+    speedLeft = round(min(max(speedLeft, -SPEED_MAX), SPEED_MAX))
+
+    motor_right.run_forever(speed_sp=speedRight)
+    motor_left.run_forever(speed_sp=speedLeft)
 
 def stopRobot (motor_left, motor_right):
     motor_left.stop(stop_action='brake')
