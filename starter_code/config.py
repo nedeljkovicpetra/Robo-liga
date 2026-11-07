@@ -1,5 +1,5 @@
 #!/home/robot/roboliga/bin/python
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*- 
 from ev3dev2.motor import OUTPUT_B, OUTPUT_C
 from ev3dev2.sensor import INPUT_1
 # Debug nastavitve
