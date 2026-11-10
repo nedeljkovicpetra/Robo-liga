@@ -1,5 +1,6 @@
 #OVO IM JE ZAJEDNICKO, ZNACI U SUSTINI KRETANJE I TAKO TE GLUPOSTI
 import math
+from starter_code.config import SPEED_BASE_MAX, SPEED_MAX, DIST_EPS
 
 def getDistance (p1, p2):
     distance = math.sqrt((p2.x - p1.x)**2 + (p2.y - p1.y)**2)
