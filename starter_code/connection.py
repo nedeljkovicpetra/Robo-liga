@@ -10,7 +10,7 @@ def robot_die(): ...
 
 class Connection():
     """
-    Objekt za vzpostavljanje povezave s strežnikom.
+    Objekt za vzpostavljanje povezave s strežnikom. 
     """
 
     def __init__(self, url: str) -> None:

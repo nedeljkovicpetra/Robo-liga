@@ -6,7 +6,7 @@ from enum import Enum
 
 class State(Enum):
     """
-    Stanja robota.
+    Stanja robota. 
     """
 
     def __str__(self):
