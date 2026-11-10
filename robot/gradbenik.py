@@ -19,7 +19,6 @@ def selectMaterial(robotPos, materials):
         if distance < minDistance:
             minDistance = distance
             closestMaterial = material
-
     return closestMaterial
 
 #POZICIONIRANJE ROBOTA
@@ -34,17 +33,14 @@ def getPushPosition(material, base, offset):
 
     pushX = material.x - (dx / distance) * offset
     pushY = material.y - (dy / distance) * offset
-
     return Point({"x": pushX, "y": pushY})
 
 def goToPushPosition(robotPos, pushPos, obstacles, safeDistance):
     path = findPath(robotPos, pushPos, obstacles, safeDistance)
-
     return path
 
 def allignWithBase(robotPos, robotDir, base):
     angle = getAngle(robotPos, robotDir, base)
-
     return angle
 
 #GURANJE MATERIJALA
@@ -57,6 +53,7 @@ def materialDelievered(materialPos, base):
         return 1
     return 0
 
+#####
 def runGradbenik(gameState, robotPos, robotDir, base, obstacles, safeDistance, offset):
     materials = findMaterial(gameState)
     if not materials:
@@ -74,9 +71,4 @@ def runGradbenik(gameState, robotPos, robotDir, base, obstacles, safeDistance, o
     if not path:
         return None
 
-    return {
-        "material": material,
-        "pushPosition": pushPosition,
-        "path": path,
-        "base": base
-    }
+    return {"material": material, "pushPosition": pushPosition, "path": path, "base": base}
