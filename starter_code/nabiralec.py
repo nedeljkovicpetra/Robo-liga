@@ -402,7 +402,7 @@ try:
                         #   error = setpoint - measurement,
                         # dobimo negativno vrednost, ko se moramo zavrteti
                         # v pozitivno smer.
-                        # Primer:
+                        # Primer: 
                         #   Robot ima smer 90 stopinj (obrnjen je proti "severu").
                         #   Cilj se nahaja na njegovi desni ("vzhod") in da ga doseze,
                         #   se mora obrniti za 90 stopinj.
