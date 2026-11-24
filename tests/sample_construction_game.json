@@ -1,0 +1,41 @@
+{
+  "id": "demo-game",
+  "game_on": true,
+  "game_paused": false,
+  "time_left": 120.0,
+  "teams": {"25": {"name": "Demo", "score": 0}},
+  "robots": {
+    "25": {"position": {"x": 300, "y": 1000}, "dir": 0.0},
+    "12": {"position": {"x": 2600, "y": 1000}, "dir": 0.0}
+  },
+  "objects": {
+    "construction_material": {
+      "m1": {"id": "m1", "type": "brick", "position": {"x": 1200, "y": 500}},
+      "m2": {"id": "m2", "type": "steel", "position": {"x": 1800, "y": 1500}}
+    },
+    "trees": {
+      "t1": {"id": "t1", "species": "pine", "position": {"x": 3000, "y": 900}},
+      "t2": {"id": "t2", "species": "cherry", "position": {"x": 3400, "y": 1100}}
+    }
+  },
+  "fields": {
+    "game_field": {
+      "top_left": {"x": 0, "y": 0},
+      "top_right": {"x": 3500, "y": 0},
+      "bottom_right": {"x": 3500, "y": 2000},
+      "bottom_left": {"x": 0, "y": 2000}
+    },
+    "construction_site": {
+      "top_left": {"x": 0, "y": 750},
+      "top_right": {"x": 1000, "y": 750},
+      "bottom_right": {"x": 1000, "y": 1250},
+      "bottom_left": {"x": 0, "y": 1250}
+    },
+    "environmentalists": {
+      "top_left": {"x": 2500, "y": 750},
+      "top_right": {"x": 3500, "y": 750},
+      "bottom_right": {"x": 3500, "y": 1250},
+      "bottom_left": {"x": 2500, "y": 1250}
+    }
+  }
+}
